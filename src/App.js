@@ -29,35 +29,41 @@ function App() {
   });
 
   return (
-    <div className="p-3">
+    <div className="container p-3">
       <h1>Product Listing Page</h1>
       <div className="container">
-        <label>
-          Filter by color:
-          <select onChange={handleFilterChange}>
-            <option value="">All</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-          </select>
-        </label>
-        <label>
-          Sort by:
-          <select onChange={handleSortChange}>
-            <option value="">None</option>
-            <option value="price">Price</option>
-            <option value="name">Name</option>
-          </select>
-        </label>
+        <div className="row p-2 justify-content-end">
+          <div className="col-lg-3 p-1 ml-auto">
+            <label>
+              Filter by color:
+              <select className="ms-2" onChange={handleFilterChange}>
+                <option value="">All</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+              </select>
+            </label>
+          </div>
+          <div className="col-lg-3 p-1">
+            <label>
+              Sort by:
+              <select className="ms-2" onChange={handleSortChange}>
+                <option value="">None</option>
+                <option value="price">Price</option>
+                <option value="name">Name</option>
+              </select>
+            </label>
+          </div>
+        </div>
       </div>
-      <div className="product-grid">
+      <div className="container product-grid">
         {sortedProducts.map((product) => (
           <div key={product.id} className="card">
             <img src={product.image} alt={product.name} className="rounded"/>
             <div class="card-body">
-              <h2>{product.name}</h2>
-              <p>${product.price.toFixed(2)}</p>
-              <p>Colors: {product.colors.join(", ")}</p>
+              <h5 class="card-title">{product.name}</h5>
+              <h6 class="card-subtitle">${product.price.toFixed(2)}</h6>
+              <p class="card-text">Colors: {product.colors.join(", ")}</p>
             </div>
           </div>
         ))}
