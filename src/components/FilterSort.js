@@ -19,8 +19,8 @@ function FilterSort({handleFilterChange, handleSortChange, filteredInfo}) {
             <option value="name">Name</option>
           </select>
         </div>
-        <div className="col-12 col-sm-6 col-md-4 col-lg-6 p-1 position-relative filter-cell">
-          <label className="position-absolute bottom-0 end-0 text-nowrap d-none d-md-block">{filteredInfo}</label>
+        <div className="col-12 col-sm-6 col-md-4 col-lg-6 p-1 d-flex justify-content-center align-items-center">
+          <label className="text-nowrap d-none d-md-block">{filteredInfo}</label>
         </div>        
       </div>
   </div>    
