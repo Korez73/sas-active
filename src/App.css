@@ -15,17 +15,12 @@
   width:200px
 }
 
-/* .product-card img {
-  width: 100%;
-  height: auto;
-} */
-
 .filter-row {
   background-color: yellow;
 }
 
 .filter-cell {
-  background-color: aqua;
+  display: flex;
 }
 
 @media (max-width: 600px) {

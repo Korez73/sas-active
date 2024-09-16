@@ -1,12 +1,13 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { products } from "./data";
 import ProductCard from "./components/ProductCard"
-
+import FilterSort from "./components/FilterSort"
 
 function App() {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
+  const [filteredInfo, setFilteredInfo] = useState("");
 
   const handleSortChange = (e) => {
     setSort(e.target.value);
@@ -29,30 +30,14 @@ function App() {
     return 0;
   });
 
+  useEffect(() => {
+    setFilteredInfo(`Currently showing ${filteredProducts.length} of ${products.length}`)
+  }, [filteredProducts])
+
   return (
     <div className="container p-3">
       <h1>Product Listing Page</h1>
-      <div className="container">
-        <div className="row p-2">
-          <div className="d-flex col-lg-3 p-1">
-            <label className="col-form-label text-nowrap">Filter by color:</label>
-            <select className="form-select form-select-sm filter-select ms-2" onChange={handleFilterChange}>
-              <option value="">All</option>
-              <option value="red">Red</option>
-              <option value="blue">Blue</option>
-              <option value="green">Green</option>
-            </select>
-          </div>
-          <div className="d-flex col-lg-3 p-1">
-            <label className="col-form-label text-nowrap">Sort by:</label>
-            <select className="form-select form-select-sm filter-select ms-2" onChange={handleSortChange}>
-              <option value="">None</option>
-              <option value="price">Price</option>
-              <option value="name">Name</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <FilterSort handleFilterChange={handleFilterChange} handleSortChange={handleSortChange} filteredInfo={filteredInfo} />
       <div className="container product-grid">
         {sortedProducts.map((product) => (
           <ProductCard product={product} />
